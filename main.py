@@ -3,7 +3,6 @@ from src.utils.logger import get_logger
 
 log = get_logger(__name__)
 
-
 def main() -> None:
     settings.ensure_directories()
 
@@ -15,7 +14,6 @@ def main() -> None:
     log.info("Model dir: %s", settings.model_dir)
     log.info("Log dir: %s", settings.log_dir)
     log.info("Scaffold OK — ready for Milestone 1 (Tire Telemetry Simulator).")
-
 
 if __name__ == "__main__":
     main()
