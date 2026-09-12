@@ -2,7 +2,7 @@
 python-dotenv==1.0.1
 pyyaml==6.0.2
 
-# Data / numerics 
+# Data / numerics
 numpy==2.1.3
 pandas==2.2.3
 
@@ -12,6 +12,11 @@ seaborn==0.13.2
 
 # Parquet I/O 
 pyarrow==18.1.0
+
+# ML 
+scikit-learn==1.5.2
+xgboost==2.1.3
+joblib==1.4.2
 
 # Testing
 pytest==8.2.2

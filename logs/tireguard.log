@@ -45,3 +45,29 @@ Warnings (6):
 2026-09-12 10:15:58 | INFO     | tireguard.__main__ | Generating charts...
 2026-09-12 10:15:59 | INFO     | tireguard.__main__ | Building findings report...
 2026-09-12 10:15:59 | INFO     | tireguard.__main__ | Wrote EDA findings to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\eda_findings.md
+2026-09-12 17:31:59 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-12 17:32:08 | INFO     | tireguard.__main__ | Loading processed dataset from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\processed\tire_telemetry_processed_20260912T044037Z.parquet
+2026-09-12 17:32:09 | INFO     | tireguard.__main__ | Dataset: 86400 rows, 60 failures (0.0694%), 60 unique tires
+2026-09-12 17:32:09 | INFO     | tireguard.__main__ | === Cross-validating Logistic Regression (baseline) ===
+2026-09-12 17:32:11 | INFO     | tireguard.__main__ | Fold 0: {'n_pos': 12, 'precision': np.float64(0.0021), 'recall': np.float64(0.6667), 'f1': np.float64(0.0043), 'roc_auc': np.float64(0.7167), 'pr_auc': np.float64(0.0038), 'fold': 0, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:13 | INFO     | tireguard.__main__ | Fold 1: {'n_pos': 12, 'precision': np.float64(0.0017), 'recall': np.float64(0.5833), 'f1': np.float64(0.0035), 'roc_auc': np.float64(0.7051), 'pr_auc': np.float64(0.0014), 'fold': 1, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:15 | INFO     | tireguard.__main__ | Fold 2: {'n_pos': 12, 'precision': np.float64(0.0016), 'recall': np.float64(0.5), 'f1': np.float64(0.0031), 'roc_auc': np.float64(0.7494), 'pr_auc': np.float64(0.0043), 'fold': 2, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:17 | INFO     | tireguard.__main__ | Fold 3: {'n_pos': 12, 'precision': np.float64(0.0012), 'recall': np.float64(0.4167), 'f1': np.float64(0.0025), 'roc_auc': np.float64(0.6729), 'pr_auc': np.float64(0.0051), 'fold': 3, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:19 | INFO     | tireguard.__main__ | Fold 4: {'n_pos': 12, 'precision': np.float64(0.0017), 'recall': np.float64(0.6667), 'f1': np.float64(0.0033), 'roc_auc': np.float64(0.8101), 'pr_auc': np.float64(0.0042), 'fold': 4, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:19 | INFO     | tireguard.__main__ | === Cross-validating Random Forest (baseline) ===
+2026-09-12 17:32:23 | INFO     | tireguard.__main__ | Fold 0: {'n_pos': 12, 'precision': np.float64(0.0769), 'recall': np.float64(0.3333), 'f1': np.float64(0.125), 'roc_auc': np.float64(0.9196), 'pr_auc': np.float64(0.309), 'fold': 0, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:27 | INFO     | tireguard.__main__ | Fold 1: {'n_pos': 12, 'precision': np.float64(0.2692), 'recall': np.float64(0.5833), 'f1': np.float64(0.3684), 'roc_auc': np.float64(0.9101), 'pr_auc': np.float64(0.3601), 'fold': 1, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:37 | INFO     | tireguard.__main__ | Fold 2: {'n_pos': 12, 'precision': np.float64(0.1176), 'recall': np.float64(0.5), 'f1': np.float64(0.1905), 'roc_auc': np.float64(0.9827), 'pr_auc': np.float64(0.0944), 'fold': 2, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:41 | INFO     | tireguard.__main__ | Fold 3: {'n_pos': 12, 'precision': np.float64(0.4286), 'recall': np.float64(0.25), 'f1': np.float64(0.3158), 'roc_auc': np.float64(0.9742), 'pr_auc': np.float64(0.3315), 'fold': 3, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:46 | INFO     | tireguard.__main__ | Fold 4: {'n_pos': 12, 'precision': np.float64(0.2083), 'recall': np.float64(0.4167), 'f1': np.float64(0.2778), 'roc_auc': np.float64(0.9975), 'pr_auc': np.float64(0.3174), 'fold': 4, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:46 | INFO     | tireguard.__main__ | === Cross-validating XGBoost ===
+2026-09-12 17:32:48 | INFO     | tireguard.__main__ | Fold 0: {'n_pos': 12, 'precision': np.float64(0.4118), 'recall': np.float64(0.5833), 'f1': np.float64(0.4828), 'roc_auc': np.float64(0.8947), 'pr_auc': np.float64(0.3833), 'fold': 0, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:50 | INFO     | tireguard.__main__ | Fold 1: {'n_pos': 12, 'precision': np.float64(0.1481), 'recall': np.float64(0.3333), 'f1': np.float64(0.2051), 'roc_auc': np.float64(0.9093), 'pr_auc': np.float64(0.1716), 'fold': 1, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:52 | INFO     | tireguard.__main__ | Fold 2: {'n_pos': 12, 'precision': np.float64(0.2059), 'recall': np.float64(0.5833), 'f1': np.float64(0.3043), 'roc_auc': np.float64(0.9861), 'pr_auc': np.float64(0.3062), 'fold': 2, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:55 | INFO     | tireguard.__main__ | Fold 3: {'n_pos': 12, 'precision': np.float64(0.1), 'recall': np.float64(0.1667), 'f1': np.float64(0.125), 'roc_auc': np.float64(0.9387), 'pr_auc': np.float64(0.0635), 'fold': 3, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:57 | INFO     | tireguard.__main__ | Fold 4: {'n_pos': 12, 'precision': np.float64(0.4615), 'recall': np.float64(0.5), 'f1': np.float64(0.48), 'roc_auc': np.float64(0.9976), 'pr_auc': np.float64(0.5164), 'fold': 4, 'n_test_rows': 17280, 'n_test_tires': 12}
+2026-09-12 17:32:57 | INFO     | tireguard.__main__ | Building evaluation report...
+2026-09-12 17:32:57 | INFO     | tireguard.__main__ | Wrote evaluation report to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\model_evaluation.md
+2026-09-12 17:32:57 | INFO     | tireguard.__main__ | Best model by mean PR-AUC: XGBoost
+2026-09-12 17:33:01 | INFO     | tireguard.__main__ | Saved final model (XGBoost) to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\failure_model.joblib
+2026-09-12 17:33:01 | INFO     | tireguard.__main__ | Saved model metadata to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\failure_model.meta.json
