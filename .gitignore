@@ -1,4 +1,44 @@
-
+# --- Secrets ---
 .env
-
 .env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+build/
+dist/
+
+# --- Data---
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# --- Models ---
+models/*
+!models/.gitkeep
+
+# --- Logs ---
+logs/*
+!logs/.gitkeep
+
+# --- Notebooks checkpoints ---
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- Node (frontend, from Milestone 12 onward) ---
+node_modules/
+.next/
