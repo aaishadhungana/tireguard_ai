@@ -1,0 +1,16 @@
+{
+  "is_synthetic": true,
+  "generator": "src.simulator.tire_simulator.TireTelemetrySimulator",
+  "generated_at_utc": "20260912T044037Z",
+  "config": {
+    "num_vehicles": 15,
+    "tires_per_vehicle": 4,
+    "duration_days": 30,
+    "sampling_interval_min": 30,
+    "failure_rate": 0.08,
+    "sensor_fault_rate": 0.03,
+    "random_seed": 42
+  },
+  "row_count": 86400,
+  "note": "All values in this file are synthetically generated from simplified, illustrative tire-engineering relationships. Not derived from real manufacturer or fleet data."
+}
