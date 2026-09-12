@@ -126,3 +126,13 @@ Warnings (6):
 2026-09-12 18:32:13 | INFO     | tireguard.__main__ | Best model by mean PR-AUC: Random Forest
 2026-09-12 18:32:30 | INFO     | tireguard.__main__ | Saved final model (Random Forest) to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\failure_model.joblib
 2026-09-12 18:32:30 | INFO     | tireguard.__main__ | Saved model metadata to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\failure_model.meta.json
+2026-09-12 18:43:26 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-12 18:43:35 | INFO     | tireguard.__main__ | Loading processed dataset from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\processed\tire_telemetry_processed_20260912T125916Z.parquet
+2026-09-12 18:43:35 | INFO     | tireguard.__main__ | Failure rows: 80, class counts: {'structural_degradation': 80}
+2026-09-12 18:43:35 | INFO     | tireguard.__main__ | === Cross-validating Random Forest ===
+2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 0: training set has fewer than 2 classes, skipping fold.
+2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 1: training set has fewer than 2 classes, skipping fold.
+2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 2: training set has fewer than 2 classes, skipping fold.
+2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 3: training set has fewer than 2 classes, skipping fold.
+2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 4: training set has fewer than 2 classes, skipping fold.
+2026-09-12 18:43:35 | INFO     | tireguard.__main__ | Pooled predictions from 0 folds, 0 total predictions
