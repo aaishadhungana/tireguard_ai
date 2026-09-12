@@ -4,8 +4,8 @@
 
 ## Dataset
 
-- Total rows: **86,400**
-- Total failures: **60** (0.0694% of rows)
+- Total rows: **115,200**
+- Total failures: **80** (0.0694% of rows)
 - Class imbalance ratio (negative:positive): **1439.0:1**
 
 ## Why Tire-Level Cross-Validation (Not a Single Time-Based Split)
@@ -16,35 +16,35 @@ A global timestamp cutoff was evaluated first and rejected: every failure in thi
 
 | Model | Precision | Recall | F1 | ROC-AUC | PR-AUC |
 |---|---|---|---|---|---|
-| Logistic Regression | 0.0017 ± 0.0003 | 0.5667 ± 0.0972 | 0.0033 ± 0.0006 | 0.7308 ± 0.0466 | 0.0038 ± 0.0013 |
-| Random Forest | 0.2201 ± 0.1241 | 0.4167 ± 0.1178 | 0.2555 ± 0.0873 | 0.9568 ± 0.0352 | 0.2825 ± 0.0956 |
-| XGBoost | 0.2655 ± 0.1446 | 0.4333 ± 0.1616 | 0.3194 ± 0.1439 | 0.9453 ± 0.0407 | 0.2882 ± 0.1584 |
+| Logistic Regression | 0.0015 ± 0.0004 | 0.5875 ± 0.0935 | 0.003 ± 0.0007 | 0.7132 ± 0.0404 | 0.0024 ± 0.0007 |
+| Random Forest | 0.4558 ± 0.1326 | 0.65 ± 0.0848 | 0.5183 ± 0.0818 | 0.9888 ± 0.0167 | 0.5525 ± 0.0708 |
+| XGBoost | 0.2761 ± 0.1407 | 0.525 ± 0.0935 | 0.3534 ± 0.1338 | 0.9866 ± 0.0125 | 0.3371 ± 0.2027 |
 
 ## Per-Fold Detail
 
 ### Logistic Regression
 
-- Fold 0: 12 tires, 17280 rows, 12 failures — precision=0.0021, recall=0.6667, f1=0.0043, roc_auc=0.7167, pr_auc=0.0038
-- Fold 1: 12 tires, 17280 rows, 12 failures — precision=0.0017, recall=0.5833, f1=0.0035, roc_auc=0.7051, pr_auc=0.0014
-- Fold 2: 12 tires, 17280 rows, 12 failures — precision=0.0016, recall=0.5, f1=0.0031, roc_auc=0.7494, pr_auc=0.0043
-- Fold 3: 12 tires, 17280 rows, 12 failures — precision=0.0012, recall=0.4167, f1=0.0025, roc_auc=0.6729, pr_auc=0.0051
-- Fold 4: 12 tires, 17280 rows, 12 failures — precision=0.0017, recall=0.6667, f1=0.0033, roc_auc=0.8101, pr_auc=0.0042
+- Fold 0: 16 tires, 23040 rows, 16 failures — precision=0.0015, recall=0.75, f1=0.003, roc_auc=0.758, pr_auc=0.0037
+- Fold 1: 16 tires, 23040 rows, 16 failures — precision=0.0015, recall=0.625, f1=0.003, roc_auc=0.7554, pr_auc=0.0017
+- Fold 2: 16 tires, 23040 rows, 16 failures — precision=0.0012, recall=0.5, f1=0.0023, roc_auc=0.6697, pr_auc=0.0021
+- Fold 3: 16 tires, 23040 rows, 16 failures — precision=0.0012, recall=0.5, f1=0.0025, roc_auc=0.6639, pr_auc=0.0019
+- Fold 4: 16 tires, 23040 rows, 16 failures — precision=0.0022, recall=0.5625, f1=0.0043, roc_auc=0.719, pr_auc=0.0025
 
 ### Random Forest
 
-- Fold 0: 12 tires, 17280 rows, 12 failures — precision=0.0769, recall=0.3333, f1=0.125, roc_auc=0.9196, pr_auc=0.309
-- Fold 1: 12 tires, 17280 rows, 12 failures — precision=0.2692, recall=0.5833, f1=0.3684, roc_auc=0.9101, pr_auc=0.3601
-- Fold 2: 12 tires, 17280 rows, 12 failures — precision=0.1176, recall=0.5, f1=0.1905, roc_auc=0.9827, pr_auc=0.0944
-- Fold 3: 12 tires, 17280 rows, 12 failures — precision=0.4286, recall=0.25, f1=0.3158, roc_auc=0.9742, pr_auc=0.3315
-- Fold 4: 12 tires, 17280 rows, 12 failures — precision=0.2083, recall=0.4167, f1=0.2778, roc_auc=0.9975, pr_auc=0.3174
+- Fold 0: 16 tires, 23040 rows, 16 failures — precision=0.3824, recall=0.8125, f1=0.52, roc_auc=0.9981, pr_auc=0.6466
+- Fold 1: 16 tires, 23040 rows, 16 failures — precision=0.2632, recall=0.625, f1=0.3704, roc_auc=0.9945, pr_auc=0.4525
+- Fold 2: 16 tires, 23040 rows, 16 failures — precision=0.5556, recall=0.625, f1=0.5882, roc_auc=0.9991, pr_auc=0.6002
+- Fold 3: 16 tires, 23040 rows, 16 failures — precision=0.4348, recall=0.625, f1=0.5128, roc_auc=0.9968, pr_auc=0.4924
+- Fold 4: 16 tires, 23040 rows, 16 failures — precision=0.6429, recall=0.5625, f1=0.6, roc_auc=0.9556, pr_auc=0.5709
 
 ### XGBoost
 
-- Fold 0: 12 tires, 17280 rows, 12 failures — precision=0.4118, recall=0.5833, f1=0.4828, roc_auc=0.8947, pr_auc=0.3833
-- Fold 1: 12 tires, 17280 rows, 12 failures — precision=0.1481, recall=0.3333, f1=0.2051, roc_auc=0.9093, pr_auc=0.1716
-- Fold 2: 12 tires, 17280 rows, 12 failures — precision=0.2059, recall=0.5833, f1=0.3043, roc_auc=0.9861, pr_auc=0.3062
-- Fold 3: 12 tires, 17280 rows, 12 failures — precision=0.1, recall=0.1667, f1=0.125, roc_auc=0.9387, pr_auc=0.0635
-- Fold 4: 12 tires, 17280 rows, 12 failures — precision=0.4615, recall=0.5, f1=0.48, roc_auc=0.9976, pr_auc=0.5164
+- Fold 0: 16 tires, 23040 rows, 16 failures — precision=0.2368, recall=0.5625, f1=0.3333, roc_auc=0.9972, pr_auc=0.3206
+- Fold 1: 16 tires, 23040 rows, 16 failures — precision=0.1522, recall=0.4375, f1=0.2258, roc_auc=0.9951, pr_auc=0.1411
+- Fold 2: 16 tires, 23040 rows, 16 failures — precision=0.2, recall=0.5, f1=0.2857, roc_auc=0.9924, pr_auc=0.147
+- Fold 3: 16 tires, 23040 rows, 16 failures — precision=0.55, recall=0.6875, f1=0.6111, roc_auc=0.9856, pr_auc=0.6957
+- Fold 4: 16 tires, 23040 rows, 16 failures — precision=0.2414, recall=0.4375, f1=0.3111, roc_auc=0.9628, pr_auc=0.3809
 
 ## Why PR-AUC Matters More Than ROC-AUC Here
 

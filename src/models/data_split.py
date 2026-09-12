@@ -13,11 +13,20 @@ Instead, we split by TIRE (group split): every row belonging to a given
 tire_id goes entirely into train OR entirely into test, never split
 across the two. This has two benefits:
 1. No leakage — a tire's own history never appears on both sides.
-2. Since each tire has exactly one failure event, a group split
-   naturally keeps the ratio of failure events proportional across
-   train/test, unlike a time-cutoff split which can be wildly skewed.
+2. Since most tires experience the same small number of failure
+   events, a group split keeps the ratio of failure events roughly
+   proportional across train/test — though this is no longer exactly
+   one-per-tire (see note below).
 
-With only 60 tires (60 total failures, one per tire), a SINGLE
+Note: after the Milestone 1 simulator retune (see tire_simulator.py's
+_build_fleet), a tire that fails, gets replaced, and then wears out
+again within the simulation window can accumulate more than one
+failure event. At default settings this affects a minority of tires.
+GroupKFold itself is unaffected either way — it only guarantees a
+tire's rows never split across folds, regardless of how many failures
+that tire has.
+
+With relatively few tires and failures overall, a SINGLE
 train/test split still leaves very few positive examples in whichever
 side is smaller. We use GroupKFold cross-validation instead of one
 split, reporting mean +/- std across folds, because a lone train/test

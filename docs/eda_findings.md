@@ -4,17 +4,15 @@
 
 ## Dataset Overview
 
-- Rows: **86,400**
-- Unique tires: **60**
-- Unique vehicles: **15**
+- Rows: **115,200**
+- Unique tires: **80**
+- Unique vehicles: **20**
 - Date range: **2026-01-01 00:00:00** to **2026-01-30 23:30:00**
 - Overall failure rate: **0.0694%** of rows
 
 ## Failure Type Distribution
 
-- `structural_degradation`: 58
-- `sensor_malfunction`: 1
-- `overloading`: 1
+- `structural_degradation`: 80
 
 ![Failure type distribution](figures/failure_type_distribution.png)
 
@@ -22,8 +20,8 @@
 
 ## Pressure and Temperature vs. Failure Outcome
 
-- Mean true pressure — failed rows: **29.743** psi vs. non-failed rows: **31.027** psi
-- Mean true temperature — failed rows: **30.025** °C vs. non-failed rows: **27.529** °C
+- Mean true pressure — failed rows: **30.042** psi vs. non-failed rows: **31.1** psi
+- Mean true temperature — failed rows: **28.665** °C vs. non-failed rows: **27.421** °C
 
 ![Pressure by failure](figures/pressure_by_failure.png)
 
@@ -39,33 +37,33 @@
 
 ![Sensor fault distribution](figures/sensor_fault_distribution.png)
 
-- `pressure_sensor_fault`: {'none': 60544, 'drift': 22153, 'stuck': 2821, 'spoofed': 457, 'missing': 425}
-- `temperature_sensor_fault`: {'none': 61180, 'drift': 21385, 'stuck': 2902, 'missing': 475, 'spoofed': 458}
-- `tread_sensor_fault`: {'none': 56060, 'drift': 26998, 'stuck': 2438, 'missing': 460, 'spoofed': 444}
+- `pressure_sensor_fault`: {'none': 80899, 'drift': 29091, 'stuck': 3911, 'spoofed': 661, 'missing': 638}
+- `temperature_sensor_fault`: {'none': 79300, 'drift': 31197, 'stuck': 3491, 'missing': 615, 'spoofed': 597}
+- `tread_sensor_fault`: {'none': 77855, 'drift': 32423, 'stuck': 3711, 'missing': 619, 'spoofed': 592}
 
-**Important finding:** `drift` alone accounts for **25.6%** of `pressure_sensor_fault` rows — far above the configured 3% sensor fault rate. This is expected given the simulator's design (drift persists across many consecutive steps once triggered, with only a small per-step chance of self-correcting), but it means the `sensor_fault_rate` config parameter does NOT directly correspond to "percent of rows affected" — it's closer to "percent of steps where a NEW fault episode begins." Worth fixing the parameter's naming/semantics or the persistence model before Milestone 7 relies on it.
+**Important finding:** `drift` alone accounts for **25.3%** of `pressure_sensor_fault` rows — far above the configured 3% sensor fault rate. This is expected given the simulator's design (drift persists across many consecutive steps once triggered, with only a small per-step chance of self-correcting), but it means the `sensor_fault_rate` config parameter does NOT directly correspond to "percent of rows affected" — it's closer to "percent of steps where a NEW fault episode begins." Worth fixing the parameter's naming/semantics or the persistence model before Milestone 7 relies on it.
 
 ## Missing-Value Imputation Summary
 
-- `pressure`: 0.492% of rows were imputed (forward/backward-filled per tire)
-- `temperature`: 0.55% of rows were imputed (forward/backward-filled per tire)
-- `tread_depth`: 0.532% of rows were imputed (forward/backward-filled per tire)
+- `pressure`: 0.554% of rows were imputed (forward/backward-filled per tire)
+- `temperature`: 0.534% of rows were imputed (forward/backward-filled per tire)
+- `tread_depth`: 0.537% of rows were imputed (forward/backward-filled per tire)
 
 ## Correlation Between Core Variables
 
 ![Correlation heatmap](figures/correlation_heatmap.png)
 
-- Pressure–temperature correlation (true values): **-0.2909** — negative, consistent with the simulator's underinflation→heat causal rule (lower pressure is associated with higher temperature).
+- Pressure–temperature correlation (true values): **-0.259** — negative, consistent with the simulator's underinflation→heat causal rule (lower pressure is associated with higher temperature).
 
 ## Descriptive Statistics
 
 | Variable | Mean | Std | Min | Max |
 |---|---|---|---|---|
-| pressure_true | 31.026 | 1.153 | 21.902 | 33.982 |
-| temperature_true | 27.531 | 3.943 | 16.023 | 51.96 |
-| tread_depth_true | 6.175 | 2.273 | 1.586 | 9.998 |
-| speed | 70.077 | 19.998 | 0.0 | 151.71 |
-| load | 500.143 | 81.122 | 172.84 | 1270.82 |
+| pressure_true | 31.099 | 1.129 | 28.024 | 33.987 |
+| temperature_true | 27.422 | 3.891 | 15.909 | 43.289 |
+| tread_depth_true | 6.113 | 2.267 | 1.588 | 9.997 |
+| speed | 70.061 | 19.994 | 0.0 | 151.71 |
+| load | 499.541 | 80.072 | 172.84 | 892.9 |
 
 ## Known Limitations Carried Into Milestone 3
 

@@ -35,7 +35,7 @@ class Settings:
     log_level: str = os.getenv("LOG_LEVEL", "INFO")
     random_seed: int = field(default_factory=lambda: _get_int("RANDOM_SEED", 42))
 
-    # ---- Paths----
+    # ---- Paths ----
     data_raw_dir: Path = field(
         default_factory=lambda: PROJECT_ROOT / os.getenv("DATA_RAW_DIR", "data/raw")
     )
@@ -48,7 +48,7 @@ class Settings:
     )
     log_dir: Path = field(default_factory=lambda: PROJECT_ROOT / "logs")
 
-    # ---- Simulator ----
+    # ---- Simulator  ----
     sim_num_vehicles: int = field(default_factory=lambda: _get_int("SIM_NUM_VEHICLES", 50))
     sim_tires_per_vehicle: int = field(
         default_factory=lambda: _get_int("SIM_TIRES_PER_VEHICLE", 4)
@@ -58,12 +58,17 @@ class Settings:
         default_factory=lambda: _get_int("SIM_SAMPLING_INTERVAL_MIN", 15)
     )
     sim_failure_rate: float = field(
-        default_factory=lambda: _get_float("SIM_FAILURE_RATE", 0.05)
+        default_factory=lambda: _get_float("SIM_FAILURE_RATE", 0.4)
     )
 
     def ensure_directories(self) -> None:
+        """Create data/model/log directories if they don't exist yet.
 
+        Idempotent — safe to call on every startup.
+        """
         for path in (self.data_raw_dir, self.data_processed_dir, self.model_dir, self.log_dir):
             path.mkdir(parents=True, exist_ok=True)
 
+
+# Singleton settings instance used throughout the app.
 settings = Settings()

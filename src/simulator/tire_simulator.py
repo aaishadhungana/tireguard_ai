@@ -59,12 +59,13 @@ class _TireContext:
     mileage: float = 0.0
     braking_history: int = 0
     maintenance_history: int = field(default=0)
+
     scripted_failure_type: Optional[str] = None
     scripted_failure_step: Optional[int] = None
 
 
 class TireTelemetrySimulator:
-
+  
     def __init__(self, config: SimulatorConfig):
         self.config = config
         self.rng = random.Random(config.random_seed)
@@ -74,48 +75,71 @@ class TireTelemetrySimulator:
         self.dt_hours = config.sampling_interval_min / 60.0
 
     def _build_fleet(self) -> list[_TireContext]:
+        total_tires = self.config.num_vehicles * self.config.tires_per_vehicle
+        tire_keys = [
+            (v, t)
+            for v in range(self.config.num_vehicles)
+            for t in range(self.config.tires_per_vehicle)
+        ]
+
+        num_scripted = round(self.config.failure_rate * total_tires)
+        scripted_indices = set(self.rng.sample(range(total_tires), k=min(num_scripted, total_tires)))
+
+        type_cycle = FAILURE_TYPES.copy()
+        self.rng.shuffle(type_cycle)
+        scripted_type_by_index: dict[int, str] = {}
+        for i, tire_index in enumerate(sorted(scripted_indices)):
+            scripted_type_by_index[tire_index] = type_cycle[i % len(type_cycle)]
+
         fleet: list[_TireContext] = []
-        for v in range(self.config.num_vehicles):
+        for tire_index, (v, t) in enumerate(tire_keys):
             vehicle_id = f"V-{v:04d}"
-            for t in range(self.config.tires_per_vehicle):
-                tire_id = f"{vehicle_id}-T{t}"
-                initial_state = TireState(
-                    pressure=self.rng.uniform(30.0, 34.0),
-                    temperature=self.rng.uniform(20.0, 28.0),
-                    tread_depth=self.rng.uniform(7.0, NEW_TREAD_DEPTH_MM),
-                    mileage=0.0,
-                    degradation=0.0,
-                )
+            tire_id = f"{vehicle_id}-T{t}"
+            initial_state = TireState(
+                pressure=self.rng.uniform(30.0, 34.0),
+                temperature=self.rng.uniform(20.0, 28.0),
+                tread_depth=self.rng.uniform(7.0, NEW_TREAD_DEPTH_MM),
+                mileage=0.0,
+                degradation=0.0,
+            )
 
-                will_fail = self.rng.random() < self.config.failure_rate
-                failure_type = self.rng.choice(FAILURE_TYPES) if will_fail else None
-                failure_step = (
-                    self.rng.randint(int(self.total_steps * 0.3), self.total_steps - 1)
-                    if will_fail
-                    else None
-                )
+            will_fail = tire_index in scripted_indices
+            failure_type = scripted_type_by_index.get(tire_index)
 
-                fleet.append(
-                    _TireContext(
-                        tire_id=tire_id,
-                        vehicle_id=vehicle_id,
-                        state=initial_state,
-                        scripted_failure_type=failure_type,
-                        scripted_failure_step=failure_step,
-                        pressure_fault=SensorFaultInjector(
-                            self.config.sensor_fault_rate, self.rng
-                        ),
-                        temperature_fault=SensorFaultInjector(
-                            self.config.sensor_fault_rate, self.rng
-                        ),
-                        tread_fault=SensorFaultInjector(
-                            self.config.sensor_fault_rate, self.rng
-                        ),
-                    )
+            lower_bound = max(1, int(self.total_steps * 0.12))
+            upper_bound = max(lower_bound + 1, int(self.total_steps * 0.45))
+            lower_bound = min(lower_bound, self.total_steps - 2)
+            upper_bound = min(upper_bound, self.total_steps - 1)
+            if upper_bound <= lower_bound:
+                upper_bound = lower_bound + 1
+            failure_step = self.rng.randint(lower_bound, upper_bound) if will_fail else None
+
+            fleet.append(
+                _TireContext(
+                    tire_id=tire_id,
+                    vehicle_id=vehicle_id,
+                    state=initial_state,
+                    scripted_failure_type=failure_type,
+                    scripted_failure_step=failure_step,
+                    pressure_fault=SensorFaultInjector(
+                        self.config.sensor_fault_rate, self.rng
+                    ),
+                    temperature_fault=SensorFaultInjector(
+                        self.config.sensor_fault_rate, self.rng
+                    ),
+                    tread_fault=SensorFaultInjector(
+                        self.config.sensor_fault_rate, self.rng
+                    ),
                 )
+            )
         return fleet
 
     def _driving_conditions(self, ctx: _TireContext, step: int) -> dict:
+        """Sample this timestep's driving conditions. If this tire is
+        scripted to fail via a stress-driven mode (overloading,
+        overheating, underinflation), conditions are biased toward that
+        stress as the failure step approaches, so the failure emerges
+        causally rather than being stamped on at the end."""
         road_type = self.rng.choice(ROAD_TYPES)
         weather = self.rng.choice(WEATHER_TYPES)
         speed_kmh = max(0.0, self.np_rng.normal(70, 20))
@@ -133,6 +157,7 @@ class TireTelemetrySimulator:
             elif ctx.scripted_failure_type == "overheating":
                 speed_kmh += progress * 60.0
             elif ctx.scripted_failure_type == "underinflation":
+                # Handled via direct pressure decay below.
                 pass
 
         has_puncture = (
@@ -154,11 +179,15 @@ class TireTelemetrySimulator:
         if ctx.scripted_failure_step is None:
             return
         if step > ctx.scripted_failure_step - 300:
+
             ctx.state.pressure = max(5.0, ctx.state.pressure - 0.03)
 
     def _label_failure(self, ctx: _TireContext, step: int, degradation: float) -> tuple[bool, str]:
         if ctx.scripted_failure_step == step:
             return True, ctx.scripted_failure_type
+
+        if ctx.scripted_failure_step is not None and step < ctx.scripted_failure_step:
+            return False, "none"
 
         if ctx.state.tread_depth <= LEGAL_MIN_TREAD_DEPTH_MM:
             return True, "structural_degradation"
@@ -243,7 +272,7 @@ class TireTelemetrySimulator:
                         "maintenance_history": ctx.maintenance_history,
                         "failure": int(failure),
                         "failure_type": failure_type,
-                
+            
                         "pressure_sensor_fault": pressure_obs.fault_type,
                         "temperature_sensor_fault": temperature_obs.fault_type,
                         "tread_sensor_fault": tread_obs.fault_type,
