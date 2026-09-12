@@ -136,3 +136,7 @@ Warnings (6):
 2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 3: training set has fewer than 2 classes, skipping fold.
 2026-09-12 18:43:35 | WARNING  | tireguard.__main__ | Fold 4: training set has fewer than 2 classes, skipping fold.
 2026-09-12 18:43:35 | INFO     | tireguard.__main__ | Pooled predictions from 0 folds, 0 total predictions
+2026-09-12 23:47:01 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-12 23:47:09 | INFO     | tireguard.__main__ | Loading model and data...
+2026-09-12 23:47:10 | INFO     | tireguard.__main__ | Explaining 80 real failure rows (one example per failure type where available)...
+2026-09-12 23:47:10 | INFO     | tireguard.__main__ | Wrote C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\root_cause_examples.md
