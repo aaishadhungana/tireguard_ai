@@ -24,13 +24,15 @@ WEATHER_TEMP_OFFSET_C = {
     "extreme_heat": 10.0,
 }
 
+
 @dataclass
 class TireState:
     pressure: float
     temperature: float
     tread_depth: float
     mileage: float
-    degradation: float  
+    degradation: float  # 0 = new, 1 = end-of-life. Internal, not a raw sensor.
+
 
 def step_pressure(state: TireState, has_puncture: bool, dt_hours: float) -> float:
     if has_puncture:
@@ -39,14 +41,15 @@ def step_pressure(state: TireState, has_puncture: bool, dt_hours: float) -> floa
     natural_leak = 0.1 * (dt_hours / 24.0)
     return max(0.0, state.pressure - natural_leak)
 
-def step_temperature(
-    state: TireState,
+
+def compute_target_temperature(
+    pressure: float,
     speed_kmh: float,
     load_kg: float,
     weather: str,
     braking_events: int,
 ) -> float:
-    underinflation_ratio = max(0.0, (NOMINAL_PRESSURE_PSI - state.pressure) / NOMINAL_PRESSURE_PSI)
+    underinflation_ratio = max(0.0, (NOMINAL_PRESSURE_PSI - pressure) / NOMINAL_PRESSURE_PSI)
     overload_ratio = max(0.0, (load_kg - NOMINAL_LOAD_KG) / NOMINAL_LOAD_KG)
     speed_factor = max(0.0, (speed_kmh - 60.0) / 100.0)
 
@@ -57,13 +60,28 @@ def step_temperature(
 
     weather_offset = WEATHER_TEMP_OFFSET_C.get(weather, 0.0)
 
-    target_temp = (
+    return (
         AMBIENT_TEMP_C
         + weather_offset
         + heat_from_underinflation
         + heat_from_overload
         + heat_from_speed
         + heat_from_braking
+    )
+
+
+def step_temperature(
+    state: TireState,
+    speed_kmh: float,
+    load_kg: float,
+    weather: str,
+    braking_events: int,
+) -> float:
+    """Temperature responds to underinflation, overload, speed, weather,
+    and hard braking. This is the central causal hub: most downstream
+    failure modes trace back through temperature."""
+    target_temp = compute_target_temperature(
+        state.pressure, speed_kmh, load_kg, weather, braking_events
     )
 
     return state.temperature + (target_temp - state.temperature) * 0.4
@@ -76,6 +94,10 @@ def step_tread_wear(
     load_kg: float,
     speed_kmh: float,
 ) -> float:
+    """Tread wears down as a function of distance, road roughness, load,
+    and speed. Higher temperature (already influenced by underinflation
+    upstream) also accelerates wear — this is the
+    underinflation -> heat -> wear chain from the spec."""
     road_factor = ROAD_TYPE_WEAR_FACTOR.get(road_type, 1.0)
     load_factor = 1.0 + max(0.0, (load_kg - NOMINAL_LOAD_KG) / NOMINAL_LOAD_KG)
     speed_factor = 1.0 + max(0.0, (speed_kmh - 80.0) / 200.0)
@@ -86,6 +108,7 @@ def step_tread_wear(
 
 
 def compute_degradation(state: TireState) -> float:
+
     tread_component = 1.0 - max(
         0.0,
         min(
