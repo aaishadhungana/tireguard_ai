@@ -168,3 +168,15 @@ Warnings (6):
 2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Best model by mean MAE: Random Forest
 2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Saved final model (Random Forest) to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
 2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Saved model metadata to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.meta.json
+2026-09-13 11:17:30 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-13 11:17:45 | INFO     | tireguard.__main__ | Loading processed dataset from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\processed\tire_telemetry_processed_20260912T125916Z.parquet
+2026-09-13 11:17:46 | INFO     | tireguard.__main__ | Computing ground truth and rule-based labels...
+2026-09-13 11:17:49 | INFO     | tireguard.__main__ | Ground truth fault rate: 66.9531%
+2026-09-13 11:17:49 | WARNING  | tireguard.__main__ | Ground truth fault rate (67.0%) exceeds IsolationForest's max contamination of 0.5 — 'anomaly' detection is not a coherent frame when most rows are anomalous. Clamping contamination to 0.5 and flagging this prominently in the report rather than silently capping it.
+2026-09-13 11:17:49 | INFO     | tireguard.__main__ | Training Isolation Forest (contamination=0.5000)...
+2026-09-13 11:17:50 | INFO     | tireguard.__main__ | ML-based metrics: {'precision': np.float64(0.7831944444444444), 'recall': np.float64(0.5848826656294568), 'f1': np.float64(0.6696652564388035)}
+2026-09-13 11:17:50 | INFO     | tireguard.__main__ | Rule-based metrics: {'precision': np.float64(1.0), 'recall': np.float64(0.0904965642421885), 'f1': np.float64(0.16597313042444417)}
+2026-09-13 11:17:50 | INFO     | tireguard.__main__ | Agreement: {'both': 5895, 'rule_only': 1085, 'ml_only': 51705, 'neither': 56515}
+2026-09-13 11:17:50 | INFO     | tireguard.__main__ | Wrote evaluation report to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\anomaly_detection_evaluation.md
+2026-09-13 11:17:50 | INFO     | tireguard.__main__ | Saved model to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\anomaly_model.joblib
+2026-09-13 11:17:50 | INFO     | tireguard.__main__ | Saved model metadata to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\anomaly_model.meta.json
