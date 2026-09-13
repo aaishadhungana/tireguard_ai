@@ -140,3 +140,31 @@ Warnings (6):
 2026-09-12 23:47:09 | INFO     | tireguard.__main__ | Loading model and data...
 2026-09-12 23:47:10 | INFO     | tireguard.__main__ | Explaining 80 real failure rows (one example per failure type where available)...
 2026-09-12 23:47:10 | INFO     | tireguard.__main__ | Wrote C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\root_cause_examples.md
+2026-09-13 11:05:26 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-13 11:05:33 | INFO     | tireguard.__main__ | Loading processed dataset from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\processed\tire_telemetry_processed_20260912T125916Z.parquet
+2026-09-13 11:05:34 | INFO     | tireguard.__main__ | Computing RUL labels...
+2026-09-13 11:05:34 | INFO     | tireguard.__main__ | Label summary: {'total_rows': 115200, 'labeled_rows': 71654, 'censored_rows': 43546, 'censored_fraction': 0.378, 'rul_mean_mileage': 15964.65, 'rul_max_mileage': 38444.85}
+2026-09-13 11:05:35 | INFO     | tireguard.__main__ | Training on 71654 non-censored rows across 80 tires
+2026-09-13 11:05:35 | INFO     | tireguard.__main__ | === Cross-validating Linear Regression ===
+2026-09-13 11:05:35 | INFO     | tireguard.__main__ | Fold 0: MAE=3242.77 RMSE=3908.18 R2=0.8300768003047176 (n=14340)
+2026-09-13 11:05:36 | INFO     | tireguard.__main__ | Fold 1: MAE=3781.75 RMSE=6502.20 R2=0.5327780236438815 (n=14337)
+2026-09-13 11:05:36 | INFO     | tireguard.__main__ | Fold 2: MAE=4816.14 RMSE=21781.19 R2=-4.17636063651512 (n=14320)
+2026-09-13 11:05:37 | INFO     | tireguard.__main__ | Fold 3: MAE=3465.29 RMSE=4036.65 R2=0.8195353097673209 (n=14318)
+2026-09-13 11:05:37 | INFO     | tireguard.__main__ | Fold 4: MAE=3512.52 RMSE=4148.83 R2=0.8097620571897337 (n=14339)
+2026-09-13 11:05:38 | INFO     | tireguard.__main__ | === Cross-validating Random Forest ===
+2026-09-13 11:06:13 | INFO     | tireguard.__main__ | Fold 0: MAE=1018.74 RMSE=2144.01 R2=0.9488604790981626 (n=14340)
+2026-09-13 11:06:57 | INFO     | tireguard.__main__ | Fold 1: MAE=992.57 RMSE=1968.98 R2=0.9571564882572564 (n=14337)
+2026-09-13 11:07:35 | INFO     | tireguard.__main__ | Fold 2: MAE=908.11 RMSE=1696.18 R2=0.9686088893132064 (n=14320)
+2026-09-13 11:08:22 | INFO     | tireguard.__main__ | Fold 3: MAE=964.79 RMSE=1847.97 R2=0.9621786661873131 (n=14318)
+2026-09-13 11:08:58 | INFO     | tireguard.__main__ | Fold 4: MAE=1171.67 RMSE=2143.00 R2=0.9492436891271184 (n=14339)
+2026-09-13 11:09:44 | INFO     | tireguard.__main__ | === Cross-validating XGBoost ===
+2026-09-13 11:09:46 | INFO     | tireguard.__main__ | Fold 0: MAE=1069.77 RMSE=2064.58 R2=0.9525793830590212 (n=14340)
+2026-09-13 11:09:47 | INFO     | tireguard.__main__ | Fold 1: MAE=1075.79 RMSE=1940.08 R2=0.9584049522923704 (n=14337)
+2026-09-13 11:09:48 | INFO     | tireguard.__main__ | Fold 2: MAE=962.15 RMSE=1624.60 R2=0.9712026728234529 (n=14320)
+2026-09-13 11:09:50 | INFO     | tireguard.__main__ | Fold 3: MAE=1038.03 RMSE=1780.48 R2=0.964890472053593 (n=14318)
+2026-09-13 11:09:51 | INFO     | tireguard.__main__ | Fold 4: MAE=1287.58 RMSE=2178.26 R2=0.9475597292862764 (n=14339)
+2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Building evaluation report...
+2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Wrote evaluation report to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\rul_evaluation.md
+2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Best model by mean MAE: Random Forest
+2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Saved final model (Random Forest) to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-13 11:09:53 | INFO     | tireguard.__main__ | Saved model metadata to C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.meta.json
