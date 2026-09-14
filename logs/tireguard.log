@@ -300,3 +300,83 @@ Warnings (6):
 2026-09-14 13:47:30 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0004-T3 failure_probability=0.000 risk=LOW
 2026-09-14 13:47:30 | INFO     | tireguard.__main__ | Subscriber stopped. Processed 100 messages across 80 tires.
 2026-09-14 13:47:31 | INFO     | tireguard.__main__ | Finished publishing 100 messages.
+2026-09-14 14:06:49 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-14 14:06:50 | INFO     | tireguard.src.api.dependencies | Loaded dataset: tire_telemetry_processed_20260912T125916Z.parquet (115200 rows)
+2026-09-14 14:06:50 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-14 14:06:50 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-14 14:06:50 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-14 14:06:50 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-14 14:06:51 | INFO     | tireguard.src.api.dependencies | Loaded dataset: tire_telemetry_processed_20260912T125916Z.parquet (115200 rows)
+2026-09-14 14:06:51 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-14 14:06:51 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-14 14:06:51 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-14 14:06:51 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 14, in fleet_stats
+    return services.get_fleet_stats(state)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\tests\test_api.py", line 139, in broken
+    raise RuntimeError("simulated internal failure")
+RuntimeError: simulated internal failure
+2026-09-14 14:06:51 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-14 14:06:51 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-14 14:06:55 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-14 14:07:07 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-14 14:07:08 | INFO     | tireguard.src.api.dependencies | Loaded dataset: tire_telemetry_processed_20260912T125916Z.parquet (115200 rows)
+2026-09-14 14:07:08 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-14 14:07:08 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-14 14:07:08 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-14 14:09:34 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-14 14:10:30 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-14 14:10:30 | INFO     | tireguard.src.api.dependencies | Loaded dataset: tire_telemetry_processed_20260912T125916Z.parquet (115200 rows)
+2026-09-14 14:10:31 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-14 14:10:31 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-14 14:10:31 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-14 14:11:03 | INFO     | tireguard.src.api.main | Shutting down.
