@@ -186,3 +186,117 @@ Warnings (6):
 2026-09-13 22:09:27 | INFO     | tireguard.__main__ | Computing integrity scores per row (sampled for speed)...
 2026-09-13 22:09:29 | INFO     | tireguard.__main__ | Building evaluation report...
 2026-09-13 22:09:29 | INFO     | tireguard.__main__ | Wrote C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\docs\integrity_engine_evaluation.md
+2026-09-14 13:44:32 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-14 13:45:16 | INFO     | tireguard.__main__ | Loading telemetry from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\raw\tire_telemetry_synthetic_20260912T125916Z.csv
+2026-09-14 13:45:16 | INFO     | tireguard.__main__ | Connecting to MQTT broker at localhost:1883
+2026-09-14 13:45:22 | INFO     | tireguard.__main__ | Loaded failure model: Random Forest
+2026-09-14 13:45:22 | INFO     | tireguard.__main__ | Connecting to MQTT broker at localhost:1883
+2026-09-14 13:45:22 | INFO     | tireguard.__main__ | Connected to MQTT broker (reason_code=Success)
+2026-09-14 13:45:22 | INFO     | tireguard.__main__ | Finished publishing 100 messages.
+2026-09-14 13:46:49 | INFO     | tireguard.__main__ | Loaded failure model: Random Forest
+2026-09-14 13:46:49 | INFO     | tireguard.__main__ | Connecting to MQTT broker at localhost:1883
+2026-09-14 13:46:49 | INFO     | tireguard.__main__ | Connected to MQTT broker (reason_code=Success)
+2026-09-14 13:47:24 | INFO     | tireguard.__main__ | Loading telemetry from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\raw\tire_telemetry_synthetic_20260912T125916Z.csv
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | Connecting to MQTT broker at localhost:1883
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0000-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0000-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0000-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0000-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0001-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0001-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0001-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0001-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0002-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0002-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0002-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0002-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0003-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0003-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0003-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0003-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0004-T0 failure_probability=0.001 risk=LOW
+2026-09-14 13:47:25 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0004-T1 failure_probability=0.001 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0004-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0004-T3 failure_probability=0.004 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0005-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0005-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0005-T2 failure_probability=0.004 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0005-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0006-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0006-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0006-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0006-T3 failure_probability=0.007 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0007-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0007-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0007-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0007-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0008-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0008-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0008-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0008-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:26 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0009-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0009-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0009-T2 failure_probability=0.004 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0009-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0010-T0 failure_probability=0.001 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0010-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0010-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0010-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0011-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0011-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0011-T2 failure_probability=0.003 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0011-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0012-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0012-T1 failure_probability=0.004 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0012-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0012-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0013-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0013-T1 failure_probability=0.003 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0013-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:27 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0013-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0014-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0014-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0014-T2 failure_probability=0.003 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0014-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0015-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0015-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0015-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0015-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0016-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0016-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0016-T2 failure_probability=0.003 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0016-T3 failure_probability=0.003 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0017-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0017-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0017-T2 failure_probability=0.004 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0017-T3 failure_probability=0.001 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0018-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0018-T1 failure_probability=0.003 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0018-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:28 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0018-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0019-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0019-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0019-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:00:00] tire=V-0019-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0000-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0000-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0000-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0000-T3 failure_probability=0.005 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0001-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0001-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0001-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0001-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0002-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0002-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0002-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0002-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0003-T0 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0003-T1 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:29 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0003-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:30 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0003-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:30 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0004-T0 failure_probability=0.012 risk=LOW
+2026-09-14 13:47:30 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0004-T1 failure_probability=0.002 risk=LOW
+2026-09-14 13:47:30 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0004-T2 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:30 | INFO     | tireguard.__main__ | [2026-01-01 00:30:00] tire=V-0004-T3 failure_probability=0.000 risk=LOW
+2026-09-14 13:47:30 | INFO     | tireguard.__main__ | Subscriber stopped. Processed 100 messages across 80 tires.
+2026-09-14 13:47:31 | INFO     | tireguard.__main__ | Finished publishing 100 messages.
