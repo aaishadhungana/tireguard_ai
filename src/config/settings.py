@@ -48,7 +48,14 @@ class Settings:
     )
     log_dir: Path = field(default_factory=lambda: PROJECT_ROOT / "logs")
 
-    # ---- Simulator  ----
+    # ---- Database ----
+    database_url: str = field(
+        default_factory=lambda: os.getenv(
+            "DATABASE_URL", "postgresql+psycopg2://postgres:tireguard@localhost:5432/tireguard_ai"
+        )
+    )
+
+    # ---- Simulator ----
     sim_num_vehicles: int = field(default_factory=lambda: _get_int("SIM_NUM_VEHICLES", 50))
     sim_tires_per_vehicle: int = field(
         default_factory=lambda: _get_int("SIM_TIRES_PER_VEHICLE", 4)
@@ -62,10 +69,6 @@ class Settings:
     )
 
     def ensure_directories(self) -> None:
-        """Create data/model/log directories if they don't exist yet.
-
-        Idempotent — safe to call on every startup.
-        """
         for path in (self.data_raw_dir, self.data_processed_dir, self.model_dir, self.log_dir):
             path.mkdir(parents=True, exist_ok=True)
 

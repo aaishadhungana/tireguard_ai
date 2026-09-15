@@ -13,12 +13,18 @@ def client():
 
 
 @pytest.fixture(scope="module")
-def real_tire_id(client):
-    from src.api.dependencies import app_state
+def real_tire_id():
+    from src.db.session import get_session
+    from src.db.repository import get_all_tire_ids
 
-    if app_state.dataset is None:
-        pytest.skip("Dataset not loaded — run the data pipeline first.")
-    return app_state.dataset["tire_id"].iloc[0]
+    try:
+        with get_session() as session:
+            tire_ids = get_all_tire_ids(session)
+    except Exception:
+        pytest.skip("Database not available -- run `python -m src.db.load_data` first.")
+    if not tire_ids:
+        pytest.skip("Database has no tires loaded -- run `python -m src.db.load_data` first.")
+    return tire_ids[0]
 
 
 def test_root_returns_service_info(client):
@@ -33,7 +39,7 @@ def test_health_reports_component_status(client):
     assert response.status_code == 200
     body = response.json()
     assert "components" in body
-    assert set(body["components"].keys()) == {"dataset", "failure_model", "rul_model"}
+    assert set(body["components"].keys()) == {"database", "failure_model", "rul_model"}
 
 
 def test_tire_history_returns_real_rows(client, real_tire_id):
@@ -89,6 +95,9 @@ def test_predict_failure_with_valid_reading(client):
 
 
 def test_predict_failure_rejects_invalid_pressure(client):
+    """Pydantic's Field(ge=0, le=150) constraint should reject this
+    before the handler even runs -- a real validation check, not just
+    'does the endpoint exist.'"""
     payload = {
         "tire_id": "TEST-TIRE-002",
         "vehicle_id": "TEST-VEHICLE-002",

@@ -4,7 +4,6 @@ from pydantic import BaseModel, Field
 
 
 class TelemetryReading(BaseModel):
-
     tire_id: str
     vehicle_id: str
     pressure: float = Field(..., ge=0, le=150, description="psi")
@@ -77,9 +76,7 @@ class FleetStatsResponse(BaseModel):
     failure_rate_pct: float
     failure_type_counts: dict
     data_source_note: str = (
-        "Statistics computed from the most recent processed dataset loaded "
-        "into memory at API startup -- this is a temporary dev-mode data "
-        "source, not a persistent database (that's Milestone 11)."
+        "Statistics computed live from the PostgreSQL database."
     )
 
 
