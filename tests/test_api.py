@@ -14,6 +14,9 @@ def client():
 
 @pytest.fixture(scope="module")
 def real_tire_id():
+    """Pulls an actual tire_id directly from the database -- requires
+    `python -m src.db.load_data` to have been run first, same as any
+    other test depending on real loaded data."""
     from src.db.session import get_session
     from src.db.repository import get_all_tire_ids
 
@@ -119,6 +122,15 @@ def test_predict_failure_rejects_missing_required_field(client):
     assert response.status_code == 422
 
 
+def test_fleet_tires_returns_all_tires_with_status(client):
+    response = client.get("/fleet/tires")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["tire_count"] > 0
+    first = body["tires"][0]
+    assert set(["tire_id", "vehicle_id", "pressure", "risk_level", "failure_probability"]) <= set(first.keys())
+
+
 def test_fleet_stats_returns_sane_numbers(client):
     response = client.get("/fleet/stats")
     assert response.status_code == 200
@@ -142,6 +154,12 @@ def test_fleet_alerts_rejects_invalid_threshold(client):
 
 
 def test_unhandled_exception_returns_structured_500(monkeypatch):
+    """Forces an unexpected exception inside a handler and checks the
+    caller gets a clean structured error, not a raw traceback. Uses a
+    dedicated client with raise_server_exceptions=False, since
+    TestClient's default behavior is to re-raise server-side exceptions
+    for debugging -- exactly what this test needs to disable to verify
+    the app's OWN exception handler actually runs."""
     from src.api import services
 
     def broken(*args, **kwargs):

@@ -3522,3 +3522,1254 @@ RuntimeError: simulated internal failure
 2026-09-15 23:29:47 | INFO     | tireguard.src.api.main | Shutting down.
 2026-09-15 23:29:47 | INFO     | tireguard.src.api.main | Shutting down.
 2026-09-15 23:30:05 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-16 07:45:47 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-16 07:45:47 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-16 07:45:47 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-16 07:45:47 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-16 07:45:47 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /tires/NONEXISTENT-TIRE-ID/history
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "telemetry" does not exist
+LINE 2: FROM telemetry 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\tires.py", line 19, in tire_history
+    return services.get_tire_history(tire_id, session, limit)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\services.py", line 130, in get_tire_history
+    rows = repository.get_tire_history(session, tire_id, limit)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\db\repository.py", line 42, in get_tire_history
+    rows = list(session.scalars(stmt))
+                ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2470, in scalars
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    ).scalars()
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "telemetry" does not exist
+LINE 2: FROM telemetry 
+             ^
+
+[SQL: SELECT telemetry.id, telemetry.tire_id, telemetry.timestamp, telemetry.pressure, telemetry.temperature, telemetry.speed, telemetry.load, telemetry.tread_depth, telemetry.mileage, telemetry.braking_events, telemetry.acceleration, telemetry.road_type, telemetry.weather, telemetry.failure, telemetry.failure_type 
+FROM telemetry 
+WHERE telemetry.tire_id = %(tire_id_1)s ORDER BY telemetry.timestamp DESC 
+ LIMIT %(param_1)s]
+[parameters: {'tire_id_1': 'NONEXISTENT-TIRE-ID', 'param_1': 50}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-09-16 07:45:48 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "telemetry" does not exist
+LINE 2: FROM telemetry
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\services.py", line 152, in get_fleet_stats
+    return repository.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\db\repository.py", line 96, in get_fleet_stats
+    total_tires = session.scalar(select(func.count(func.distinct(Telemetry.tire_id)))) or 0
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2410, in scalar
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "telemetry" does not exist
+LINE 2: FROM telemetry
+             ^
+
+[SQL: SELECT count(distinct(telemetry.tire_id)) AS count_1 
+FROM telemetry]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-09-16 07:45:49 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/alerts
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "telemetry" does not exist
+LINE 2: FROM telemetry ORDER BY telemetry.tire_id, telemetry.timesta...
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 24, in fleet_alerts
+    return services.get_alerts(session, state, risk_threshold)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\services.py", line 159, in get_alerts
+    all_rows = repository.get_all_telemetry(session)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\db\repository.py", line 122, in get_all_telemetry
+    return list(session.scalars(stmt))
+                ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2470, in scalars
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    ).scalars()
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "telemetry" does not exist
+LINE 2: FROM telemetry ORDER BY telemetry.tire_id, telemetry.timesta...
+             ^
+
+[SQL: SELECT telemetry.id, telemetry.tire_id, telemetry.timestamp, telemetry.pressure, telemetry.temperature, telemetry.speed, telemetry.load, telemetry.tread_depth, telemetry.mileage, telemetry.braking_events, telemetry.acceleration, telemetry.road_type, telemetry.weather, telemetry.failure, telemetry.failure_type 
+FROM telemetry ORDER BY telemetry.tire_id, telemetry.timestamp]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-09-16 07:45:49 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-16 07:45:49 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-16 07:45:49 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-16 07:45:49 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-16 07:45:49 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\tests\test_api.py", line 148, in broken
+    raise RuntimeError("simulated internal failure")
+RuntimeError: simulated internal failure
+2026-09-16 07:45:49 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-16 07:45:49 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-16 07:45:55 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-16 07:46:53 | INFO     | tireguard.__main__ | Creating tables if they don't already exist...
+2026-09-16 07:46:53 | INFO     | tireguard.__main__ | Reading C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\processed\tire_telemetry_processed_20260912T125916Z.parquet
+2026-09-16 07:46:54 | INFO     | tireguard.__main__ | Inserting 20 vehicles and 80 tires...
+2026-09-16 07:46:55 | INFO     | tireguard.__main__ | Inserting 115200 telemetry rows in batches of 5000...
+2026-09-16 07:46:57 | INFO     | tireguard.__main__ | Inserted 20000 / 115200 telemetry rows...
+2026-09-16 07:46:59 | INFO     | tireguard.__main__ | Inserted 40000 / 115200 telemetry rows...
+2026-09-16 07:47:01 | INFO     | tireguard.__main__ | Inserted 60000 / 115200 telemetry rows...
+2026-09-16 07:47:04 | INFO     | tireguard.__main__ | Inserted 80000 / 115200 telemetry rows...
+2026-09-16 07:47:06 | INFO     | tireguard.__main__ | Inserted 100000 / 115200 telemetry rows...
+2026-09-16 07:47:08 | INFO     | tireguard.__main__ | Inserted 115200 / 115200 telemetry rows...
+2026-09-16 07:47:08 | INFO     | tireguard.__main__ | Load complete: 20 vehicles, 80 tires, 115200 telemetry rows.
+2026-09-16 07:47:18 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-16 07:47:18 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-16 07:47:19 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-16 07:47:19 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-16 07:47:26 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-16 07:47:26 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-16 07:47:26 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-16 07:47:26 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-16 07:47:26 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\tests\test_api.py", line 148, in broken
+    raise RuntimeError("simulated internal failure")
+RuntimeError: simulated internal failure
+2026-09-16 07:47:26 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-16 07:47:26 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-16 07:47:33 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-16 07:47:50 | INFO     | tireguard.__main__ | Creating tables if they don't already exist...
+2026-09-16 07:47:50 | INFO     | tireguard.__main__ | Reading C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\data\processed\tire_telemetry_processed_20260912T125916Z.parquet
+2026-09-16 07:47:50 | INFO     | tireguard.__main__ | Inserting 20 vehicles and 80 tires...
+2026-09-16 07:47:51 | INFO     | tireguard.__main__ | Inserting 115200 telemetry rows in batches of 5000...
+2026-09-16 07:47:55 | INFO     | tireguard.__main__ | Inserted 20000 / 115200 telemetry rows...
+2026-09-16 07:47:57 | INFO     | tireguard.__main__ | Inserted 40000 / 115200 telemetry rows...
+2026-09-16 07:47:59 | INFO     | tireguard.__main__ | Inserted 60000 / 115200 telemetry rows...
+2026-09-16 07:48:02 | INFO     | tireguard.__main__ | Inserted 80000 / 115200 telemetry rows...
+2026-09-16 07:48:04 | INFO     | tireguard.__main__ | Inserted 100000 / 115200 telemetry rows...
+2026-09-16 07:48:05 | INFO     | tireguard.__main__ | Inserted 115200 / 115200 telemetry rows...
+2026-09-16 07:48:05 | INFO     | tireguard.__main__ | Load complete: 20 vehicles, 80 tires, 115200 telemetry rows.
+2026-09-16 07:48:25 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-16 07:48:25 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-16 07:48:25 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-16 07:48:25 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-16 07:53:34 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-18 10:03:28 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-18 10:03:28 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-18 10:03:28 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-18 10:03:28 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-18 10:03:41 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /tires/NONEXISTENT-TIRE-ID/history
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\tires.py", line 19, in tire_history
+    return services.get_tire_history(tire_id, session, limit)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\services.py", line 130, in get_tire_history
+    rows = repository.get_tire_history(session, tire_id, limit)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\db\repository.py", line 42, in get_tire_history
+    rows = list(session.scalars(stmt))
+                ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2470, in scalars
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    ).scalars()
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-18 10:03:46 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\services.py", line 152, in get_fleet_stats
+    return repository.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\db\repository.py", line 96, in get_fleet_stats
+    total_tires = session.scalar(select(func.count(func.distinct(Telemetry.tire_id)))) or 0
+                  ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2410, in scalar
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-18 10:03:51 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/alerts
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 24, in fleet_alerts
+    return services.get_alerts(session, state, risk_threshold)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\services.py", line 159, in get_alerts
+    all_rows = repository.get_all_telemetry(session)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\db\repository.py", line 122, in get_all_telemetry
+    return list(session.scalars(stmt))
+                ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2470, in scalars
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    ).scalars()
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        err, dialect, engine
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 179, in _do_get
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    return self._create_connection()
+           ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 674, in __init__
+    self.__connect()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 900, in __connect
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-09-18 10:03:52 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-18 10:03:52 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-18 10:03:52 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-18 10:03:52 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-18 10:03:52 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\tests\test_api.py", line 148, in broken
+    raise RuntimeError("simulated internal failure")
+RuntimeError: simulated internal failure
+2026-09-18 10:03:52 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-18 10:03:52 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-18 10:04:14 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-18 16:41:37 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-18 16:41:37 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-18 16:41:37 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-18 16:41:37 | INFO     | tireguard.src.api.main | Application state loaded successfully.

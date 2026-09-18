@@ -76,8 +76,24 @@ class FleetStatsResponse(BaseModel):
     failure_rate_pct: float
     failure_type_counts: dict
     data_source_note: str = (
-        "Statistics computed live from the PostgreSQL database."
+        "Statistics computed live from the PostgreSQL database (Milestone 11)."
     )
+
+
+class TireSummary(BaseModel):
+    tire_id: str
+    vehicle_id: str
+    pressure: float
+    temperature: float
+    tread_depth: float
+    failure_probability: float
+    risk_level: str
+    timestamp: str
+
+
+class FleetTiresResponse(BaseModel):
+    tire_count: int
+    tires: list[TireSummary]
 
 
 class AlertItem(BaseModel):
