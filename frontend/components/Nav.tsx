@@ -16,6 +16,9 @@ export function Nav() {
           <Link href="/intelligence" className="hover:text-slate-100">
             Fleet Intelligence
           </Link>
+          <Link href="/copilot" className="hover:text-slate-100">
+            AI Copilot
+          </Link>
         </nav>
       </div>
     </header>

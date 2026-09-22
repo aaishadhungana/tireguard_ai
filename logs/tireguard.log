@@ -4773,3 +4773,163 @@ RuntimeError: simulated internal failure
 2026-09-18 16:41:37 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
 2026-09-18 16:41:37 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
 2026-09-18 16:41:37 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-22 22:30:11 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:30:11 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:30:12 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:30:12 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-22 22:30:44 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:30:44 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:30:44 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:30:44 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-22 22:30:44 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\tests\test_api.py", line 166, in broken
+    raise RuntimeError("simulated internal failure")
+RuntimeError: simulated internal failure
+2026-09-22 22:30:45 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-22 22:30:45 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-22 22:30:45 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:30:45 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:30:45 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:30:47 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:30:47 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:30:47 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:31:37 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-22 22:34:27 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:34:28 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:34:28 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:34:28 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-22 22:34:59 | ERROR    | tireguard.src.api.main | Unhandled exception processing GET /fleet/stats
+Traceback (most recent call last):
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\starlette\concurrency.py", line 39, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\src\api\routers\fleet.py", line 15, in fleet_stats
+    return services.get_fleet_stats(session)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\tests\test_api.py", line 166, in broken
+    raise RuntimeError("simulated internal failure")
+RuntimeError: simulated internal failure
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.main | Shutting down.
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:34:59 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:35:03 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_stats({})
+2026-09-22 22:35:12 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:35:13 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:35:13 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:35:54 | INFO     | tireguard.tests.test_foundation | Logger smoke test message.
+2026-09-22 22:37:50 | INFO     | tireguard.src.api.dependencies | Loading application state...
+2026-09-22 22:37:50 | INFO     | tireguard.src.api.dependencies | Loaded failure prediction model: Random Forest
+2026-09-22 22:37:50 | INFO     | tireguard.src.api.dependencies | Loaded RUL model from C:\Users\aaish\OneDrive\Desktop\actual_projects\tireguard_ai\models\rul_model.joblib
+2026-09-22 22:37:50 | INFO     | tireguard.src.api.main | Application state loaded successfully.
+2026-09-22 22:40:52 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_alerts({'risk_threshold': 'HIGH'})
+2026-09-22 22:41:12 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_alerts({'risk_threshold': 'MEDIUM'})
+2026-09-22 22:41:30 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_stats({})
+2026-09-22 22:41:50 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_alerts({})
+2026-09-22 22:41:53 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_stats({})
+2026-09-22 22:42:04 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_stats({})
+2026-09-22 22:42:07 | INFO     | tireguard.src.copilot.agent | Copilot calling tool: get_fleet_alerts({'risk_threshold': 'LOW'})

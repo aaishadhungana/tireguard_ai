@@ -4,6 +4,11 @@ from pydantic import BaseModel, Field
 
 
 class TelemetryReading(BaseModel):
+    """Raw telemetry a caller submits for on-demand prediction -- same
+    shape as a single streaming message (Milestone 9), not the
+    engineered-feature schema the models actually consume internally.
+    The service layer is responsible for that translation."""
+
     tire_id: str
     vehicle_id: str
     pressure: float = Field(..., ge=0, le=150, description="psi")
@@ -107,6 +112,22 @@ class AlertItem(BaseModel):
 class AlertsResponse(BaseModel):
     alert_count: int
     alerts: list[AlertItem]
+
+
+class CopilotToolCall(BaseModel):
+    tool: str
+    input: dict
+    result: dict
+
+
+class CopilotAskRequest(BaseModel):
+    question: str
+
+
+class CopilotAskResponse(BaseModel):
+    answer: str
+    tool_calls: list[CopilotToolCall]
+    iterations: int
 
 
 class ErrorResponse(BaseModel):

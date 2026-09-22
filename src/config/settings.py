@@ -35,7 +35,7 @@ class Settings:
     log_level: str = os.getenv("LOG_LEVEL", "INFO")
     random_seed: int = field(default_factory=lambda: _get_int("RANDOM_SEED", 42))
 
-    # ---- Paths ----
+    # ---- Paths (resolved relative to project root) ----
     data_raw_dir: Path = field(
         default_factory=lambda: PROJECT_ROOT / os.getenv("DATA_RAW_DIR", "data/raw")
     )
@@ -48,14 +48,17 @@ class Settings:
     )
     log_dir: Path = field(default_factory=lambda: PROJECT_ROOT / "logs")
 
-    # ---- Database ----
+    # ---- Database (Milestone 11) ----
     database_url: str = field(
         default_factory=lambda: os.getenv(
             "DATABASE_URL", "postgresql+psycopg2://postgres:tireguard@localhost:5432/tireguard_ai"
         )
     )
 
-    # ---- Simulator ----
+    llm_api_key: str = field(default_factory=lambda: os.getenv("LLM_API_KEY", ""))
+    llm_model: str = field(default_factory=lambda: os.getenv("LLM_MODEL", "gemini-2.5-flash"))
+
+    # ---- Simulator (Milestone 1) ----
     sim_num_vehicles: int = field(default_factory=lambda: _get_int("SIM_NUM_VEHICLES", 50))
     sim_tires_per_vehicle: int = field(
         default_factory=lambda: _get_int("SIM_TIRES_PER_VEHICLE", 4)
@@ -69,9 +72,11 @@ class Settings:
     )
 
     def ensure_directories(self) -> None:
+        """Create data/model/log directories if they don't exist yet.
+
+        Idempotent — safe to call on every startup.
+        """
         for path in (self.data_raw_dir, self.data_processed_dir, self.model_dir, self.log_dir):
             path.mkdir(parents=True, exist_ok=True)
 
-
-# Singleton settings instance used throughout the app.
 settings = Settings()

@@ -1,5 +1,6 @@
 ﻿import type {
   AlertsResponse,
+  CopilotAskResponse,
   FleetStatsResponse,
   FleetTiresResponse,
   RootCauseResponse,
@@ -12,6 +13,7 @@ const API_BASE_URL =
 
 async function apiFetch<T>(path: string, revalidateSeconds = 0): Promise<T> {
   const res = await fetch(`${API_BASE_URL}${path}`, {
+ 
     cache: revalidateSeconds > 0 ? "force-cache" : "no-store",
     next: revalidateSeconds > 0 ? { revalidate: revalidateSeconds } : undefined,
   });
@@ -41,6 +43,19 @@ export const api = {
     apiFetch<RootCauseResponse>(
       `/tires/${encodeURIComponent(tireId)}/root-cause`
     ),
+  copilotAsk: async (question: string): Promise<CopilotAskResponse> => {
+    const res = await fetch(`${API_BASE_URL}/copilot/ask`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }),
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({ detail: res.statusText }));
+      throw new Error(body.detail ?? `Request failed: ${res.status}`);
+    }
+    return res.json();
+  },
 };
 
 export function riskColor(risk: "LOW" | "MEDIUM" | "HIGH"): string {

@@ -75,3 +75,15 @@ export interface RootCauseResponse {
   triggered_engineering_rules: RootCauseContribution[];
   caveat: string;
 }
+
+export interface CopilotToolCall {
+  tool: string;
+  input: Record<string, unknown>;
+  result: Record<string, unknown>;
+}
+
+export interface CopilotAskResponse {
+  answer: string;
+  tool_calls: CopilotToolCall[];
+  iterations: number;
+}
