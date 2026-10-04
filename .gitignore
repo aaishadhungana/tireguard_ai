@@ -42,3 +42,5 @@ logs/*
 # --- Node (frontend, from Milestone 12 onward) ---
 node_modules/
 .next/
+
+**/.terraform/
